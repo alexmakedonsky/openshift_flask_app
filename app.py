@@ -10,7 +10,8 @@ class Config:
 
 def get_app():
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://user:user@mysql.as044937-dev.svc.cluster.local/sampledb"
+    # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
     app.config.from_object(Config)
     app.register_blueprint(posts)
     db.init_app(app)
@@ -22,5 +23,4 @@ def get_app():
 application = get_app()
 
 if __name__ == "__main__":
-
-    application.run(host="0.0.0.0", port=5000,debug=True)
+    application.run(host="0.0.0.0", port=5000, debug=True)
